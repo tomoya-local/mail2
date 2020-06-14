@@ -27,12 +27,7 @@ def hostadd():
     port=input(' smtpサーバのポート番号 >> ')
     if port=="":
        port="465"
-    kk=input(' imap情報を登録しますか? (Y or N) >> ')
-    if kk=="y" or kk=="Y":
-        print('')
-        host=input(' imapホスト名 >> ')
-    else:
-        host="none"
+    host="none"
     account = "none"
     from_email=account
     print('')
