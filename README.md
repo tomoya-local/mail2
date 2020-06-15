@@ -7,7 +7,7 @@ software main language Japanese
 mail2.exe (sending Email Dedicated tool)
 mail server(smtp) + mail account
 
-imap-mail.exe (Email confirmation tool)
+imap-mail.exe (Email confirmation tool)  
 mail server(imap) + mail account
 
 ## software license
