@@ -32,11 +32,9 @@ def hostadd(a,file):
     from_email=account
     print('')
     password = 'none'
-    if a==0:
-        filename=input(' セッションファイル名 >> ')
-        filename=filename+".bin"
-    else:
-        filename=copy.copy(file)
+    filename=input(' セッションファイル名 >> ')
+    filename=filename+".bin"
+    filename=copy.copy(file)
     config = configparser.ConfigParser()
     section2 = 'profile'
     section2 = 'profile'
