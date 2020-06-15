@@ -16,9 +16,9 @@ ccff=0
 cc=0
 g=0
 args = sys.argv
-
+file=0
 #ホスト情報の追加関数
-def hostadd():
+def hostadd(a,file):
     print('')
     host2=input(' smtpサーバのホスト名 >> ')
     print('')
@@ -34,6 +34,7 @@ def hostadd():
     password = 'none'
     filename=input(' セッションファイル名 >> ')
     filename=filename+".bin"
+    filename=copy.copy(file)
     config = configparser.ConfigParser()
     section2 = 'profile'
     section2 = 'profile'
@@ -70,7 +71,8 @@ if j==2:
         cds=1
 filecheck=os.path.exists('./host.ini')
 if filecheck==0:
-    host2,port=hostadd()
+    a=0
+    host2,port=hostadd(a,file)
     ccff=0
 #configの読み取り
 if filecheck!=0:
@@ -121,7 +123,8 @@ while ccd==1:
         ac=int(ac)
         if ac==-2:
             os.system('cls')
-            host2,port=hostadd()
+            a=0
+            host2,port=hostadd(a,file)
             ccf=0
             continue
         if ac<-1:
@@ -168,12 +171,21 @@ cdf=1
 while cdf==1:
     try:
         file=copy.copy(files[ac])
+<<<<<<< HEAD
     except IndexError:
         os.system('cls')
         print(' エラー！：ホスト情報がありません')
         print('')
         host2,port=hostadd()
         ccff=0
+=======
+    except: 
+        os.system('cls')
+        print(' エラー！：ホスト情報がありません')
+        a=1
+        host2,port=hostadd(a,file)
+        ccff=1
+>>>>>>> 799c7e461cef5b08c3d575eef9e710d4a421517a
     g=os.path.isfile(file)
     if g==True and ccvg==1:
         # SMTP認証情報の読み込み
@@ -193,7 +205,12 @@ while cdf==1:
         print('')
         kg=input(' セッション情報を設定しなおしますか? (y or n) >>')
         if kg=="y" or kg=="Y":
+<<<<<<< HEAD
             host2,port,file=hostadd()
+=======
+            a=0
+            host2,port=hostadd(a,file)
+>>>>>>> 799c7e461cef5b08c3d575eef9e710d4a421517a
             g=0
             continue
         else:
