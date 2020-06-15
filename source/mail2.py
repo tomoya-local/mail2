@@ -245,7 +245,7 @@ else:
     msg="本文:"+message1
     backups="件名:"+subject+"\n送信先: "+to_email+"\n送信元:"+from_email+"\n日付："+data+"\n\n本文:"+message1
     usear=[to,from2,sub,data,msg]
-    with open("./mail.log", mode='w') as f:
+    with open("./mail.log", mode='a') as f:
         f.write(backups)
     f.close()
     input(' 送信しました>>')
