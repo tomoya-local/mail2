@@ -59,6 +59,7 @@ def hostadd():
     pickle.dump(usear,f)
     f.close()
     os.system('cls')
+    file=copy.copy(filename)
     return host2, port
 ccff=1
 cds=0
@@ -165,7 +166,14 @@ def login(host2,port,server):
 # SMTPサーバへの接続
 cdf=1
 while cdf==1:
-    file=copy.copy(files[ac])
+    try:
+        file=copy.copy(files[ac])
+    except IndexError:
+        os.system('cls')
+        print(' エラー！：ホスト情報がありません')
+        print('')
+        host2,port=hostadd()
+        ccff=0
     g=os.path.isfile(file)
     if g==True and ccvg==1:
         # SMTP認証情報の読み込み
@@ -185,7 +193,7 @@ while cdf==1:
         print('')
         kg=input(' セッション情報を設定しなおしますか? (y or n) >>')
         if kg=="y" or kg=="Y":
-            host2,port=hostadd()
+            host2,port,file=hostadd()
             g=0
             continue
         else:
@@ -242,10 +250,10 @@ else:
     sub="件名:"+subject
     dt_now = datetime.datetime.now()
     data=dt_now.strftime('%Y/%m/%d/ %H:%M:%S')
-    msg="本文:"+message1
-    backups="件名:"+subject+"\n送信先: "+to_email+"\n送信元:"+from_email+"\n日付："+data+"\n\n本文:"+message1
+    msg="本文:"+message1+"\n"
+    backups="\n\n件名:"+subject+"\n送信先: "+to_email+"\n送信元:"+from_email+"\n日付："+data+"\n\n本文:"+message1
     usear=[to,from2,sub,data,msg]
-    with open("./mail.log", mode='w') as f:
+    with open("./mail.log", mode='a') as f:
         f.write(backups)
     f.close()
     input(' 送信しました>>')
