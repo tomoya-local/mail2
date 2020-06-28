@@ -22,7 +22,7 @@ def hostadd():
     print('')
     host2=input(' smtpサーバのホスト名 >> ')
     print('')
-    print(' ポート番号はサーバー側から特に指定のない場合、\n SSL用ポート番号の「465」を入力してください')
+    print(' ポート番号はサーバー側から指定のない場合、\n SSL用ポート番号の「465」を入力してください')
     print('')
     port=input(' smtpサーバのポート番号 >> ')
     if port=="":
@@ -156,7 +156,7 @@ def login(host2,port,server):
             print('')
             print(' ユーザーアカウントを確認してください')
             print('')
-            print(' アカウントの権限を確認してください')
+            print(' 2段階認証を使用している場合は\n アプリケーションパスワードを使用してください')
             print('')
             input(' リトライするにはエンターキーを押してください')
             g=0
@@ -226,6 +226,8 @@ print('')
 # 本文の入力（ファイルからの読み込みの場合は入力しない)
 if cds==0:
     message = input(' 本文 >> ')
+    if message=="":
+        message=" このメールには本文がありません"
 message1=copy.copy(message)
 message=message.replace('/n','<br>')
 
